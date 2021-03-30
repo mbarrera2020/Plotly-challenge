@@ -33,7 +33,7 @@
 // Create a horizontal bar chart for selected Subject ID to display the top 1O OTUs 
 // found in that individual
 // ----------------------------------------------------------------------------
-  function barChart(subjectId){
+  function barChart(subjectID){
 
       d3.json('samples.json').then((data)=>{
           var dataSamples = data.samples;
