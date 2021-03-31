@@ -61,7 +61,12 @@ function fn_initialize(){
           // ------------------------------------------
           // Setup chart layout with title & margins
           // ------------------------------------------
-          var layout = {title: "Top 10 OTUs", margin: {t: 80, l: 175}};
+          var layout = {
+            title: "Top 10 OTUs",
+            xaxis: { title: "Sample Values" },
+            yaxis: { title: "OTU IDs  "},
+            margin: {t: 80, l: 175}};
+
 
           // ------------------------------------------
           // Display bar chart            
@@ -93,7 +98,8 @@ function fn_displayData(subjectID) {
     // Use `.html("") to clear any existing metadata
         panelinfo.html("");
 
-
+    
+        
     });
 
   });
