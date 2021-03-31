@@ -46,7 +46,7 @@ function fn_initialize(){
           var samples = data.samples;
           var ID = samples.map(row=>row.id).indexOf(subjectId);
           var otuValueTen = samples.map(row=>row.sample_values);
-          var otuValueTen = otuValueTen[ID].slice(0,10).reverse();
+          var otuValueTen = otuValueTen[ID].slice(0,10);
           var otuIdTen = samples.map(row=>row.otu_ids);
           var otuIdTen = otuIdTen[ID].slice(0,10);
           var otuLabelTen = samples.map(row=>row.otu_labels).slice(0,10);
@@ -64,9 +64,9 @@ function fn_initialize(){
           var layout = {
             title: "Top 10 OTUs",
             xaxis: { title: "Sample Values" },
-            yaxis: { title: "OTU IDs  "},
-            margin: {t: 80, l: 175}};
-
+            yaxis: { title: "OTU IDs"},
+            margin: {t: 80, l: 175}
+          };
 
           // ------------------------------------------
           // Display bar chart            
@@ -89,16 +89,18 @@ function fn_displayData(subjectID) {
     var metadata = data.metadata;
 
     // Filter the data for the selected ID number 
-    var filteredData = metadata.filter(object => object.id == subjectID);
+    var filteredData = metadata.filter(object => object.id === subjectID);
     var result = filteredData[0];
     
     // Use d3 to select the panel with id of `#sample-metadata`
     var panelinfo = d3.select("#sample-metadata");
 
-    // Use `.html("") to clear any existing metadata
+    // Clear the display for the next metadata selection
         panelinfo.html("");
 
-    
+    // Use `Object.entries` to add each key and value pair to the panel
+        Object.entries(result).forEach(([key, value]) => {
+        panelinfo.append("h6").text(`${key.toUpperCase()}: ${value}`);
         
     });
 
