@@ -24,6 +24,7 @@ function fn_initialize(){
 
       // ---------------------------------------------------------------
       // Initialize display with first record
+      // Display charts using first Test ID
       // ---------------------------------------------------------------
       var defaultID = testNames[0];
 
@@ -43,11 +44,12 @@ function fn_initialize(){
   function fn_barChart(subjectID){
       d3.json('samples.json').then((data)=>{
           var samples = data.samples;
+
           // Test / display data
           console.log(samples)
   
           var ID = samples.map(row=>row.id).indexOf(subjectID);
-          // Test / display data
+
           console.log(ID)
 
           // Use otu_ids as the labels for the bar chart.
@@ -81,7 +83,7 @@ function fn_initialize(){
           };
 
           // ------------------------------------------
-          // Display bar chart            
+          // Display the bar chart            
           // ------------------------------------------
           Plotly.newPlot('bar',[trace],layout);
       })
@@ -92,7 +94,6 @@ function fn_initialize(){
 // ------------------------------------------------------------------------------------
 // function fn_bubbleChart(subjectID)
 //  <insert code here for bubble chart>
-
 
 
 // ------------------------------------------------------------------------------------
@@ -108,8 +109,10 @@ function fn_displayData(subjectID) {
     var result = filteredData[0];
     
     // Use d3 to select the panel with id of `#sample-metadata`
-    // example:  "metadata":[{"id": 940, "ethnicity": "Caucasian", 
-    //   "gender": "F", "age": 24.0, "location": "Beaufort/NC", "bbtype": "I", "wfreq": 2.0}
+    //   example data for reference:  
+    //   "metadata":[{"id": 940, "ethnicity": "Caucasian", 
+    //   "gender": "F", "age": 24.0, "location": "Beaufort/NC", 
+    //   "bbtype": "I", "wfreq": 2.0}
 
     var panelInfo = d3.select("#sample-metadata");
     // Test / display data
@@ -120,8 +123,7 @@ function fn_displayData(subjectID) {
 
     // Add key and value pair to the panel
     Object.entries(result).forEach(([key, value]) => {
-      // panelInfo.append("h6").text(`${key.toUpperCase()}: ${value}`);
-      panelInfo.append().text(`${key}: ${value}`);
+      panelInfo.append('div').text(`${key}: ${value}`);
     });
 
   });
