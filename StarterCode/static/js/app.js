@@ -60,7 +60,7 @@ function fn_initialize(){
 
           // Use sample_values as the values for the bar chart.
           var sampleValue = samples.map(row=>row.sample_values);
-          var sampleValueTopTen = sampleValue[ID];
+          var sampleValueTopTen = sampleValue[ID].slice(0,10).reverse();
           
           // Use otu_labels as the hovertext for the chart.
           var otuLabelTopTen = samples.map(row=>row.otu_labels).slice(0,10);
@@ -132,7 +132,7 @@ function fn_displayData(subjectID) {
 // ------------------------------------------------------------------------------------
 // 6.  Update all of the plots any time that a new sample is selected. 
 // ------------------------------------------------------------------------------------
-function fn_optionChanged(newSelection) {
+function optionChanged(newSelection) {
   fn_displayData(newSelection);
   fn_barChart(newSelection);
 };
