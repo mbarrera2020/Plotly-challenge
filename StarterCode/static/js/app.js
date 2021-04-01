@@ -108,14 +108,20 @@ function fn_displayData(subjectID) {
     var result = filteredData[0];
     
     // Use d3 to select the panel with id of `#sample-metadata`
-    var panelinfo = d3.select("#sample-metadata");
+    // example:  "metadata":[{"id": 940, "ethnicity": "Caucasian", 
+    //   "gender": "F", "age": 24.0, "location": "Beaufort/NC", "bbtype": "I", "wfreq": 2.0}
 
-    // Use `.html("") to clear any existing metadata
-    panelinfo.html("");
+    var panelInfo = d3.select("#sample-metadata");
+    // Test / display data
+    console.log(panelInfo)
 
-    // Use `Object.entries` to add each key and value pair to the panel
+    // Clear any existing metadata
+    panelInfo.html("");
+
+    // Add key and value pair to the panel
     Object.entries(result).forEach(([key, value]) => {
-      panelinfo.append("h6").text(`${key.toUpperCase()}: ${value}`);
+      // panelInfo.append("h6").text(`${key.toUpperCase()}: ${value}`);
+      panelInfo.append().text(`${key}: ${value}`);
     });
 
   });
