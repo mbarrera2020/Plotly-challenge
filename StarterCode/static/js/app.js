@@ -1,4 +1,6 @@
-// Level 1
+// Plot.ly Homework - Belly Button Biodiversity
+// Step 1
+//
 // Use the D3 library to read in samples.json.
 // Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs 
 //      found in that individual.
@@ -31,8 +33,9 @@ function fn_initialize(){
       // Test / display data
       console.log(defaultID)
   
-      fn_barChart(defaultID);
       fn_displayData(defaultID);
+      fn_barChart(defaultID);
+      fn_bubbleChart(defaultID);
 
     });
    };
@@ -91,10 +94,58 @@ function fn_initialize(){
 
 // ------------------------------------------------------------------------------------
 // 3. Create a bubble chart that displays each sample.   
+//    Use otu_ids for the x values.
+//    Use sample_values for the y values.
+//    Use sample_values for the marker size.
+//    Use otu_ids for the marker colors.
+//    Use otu_labels for the text values.
 // ------------------------------------------------------------------------------------
-// function fn_bubbleChart(subjectID)
-//  <insert code here for bubble chart>
+function fn_bubbleChart(subjectID){
+  d3.json('samples.json').then((data)=>{
+      var samples=data.samples;
 
+      // Test / display data
+      console.log(samples)
+  
+      var ID = samples.map(row=>row.id).indexOf(subjectID);
+      console.log(ID)
+
+      var otuIDs = samples.map(row => row.otu_ids);
+      var otuIDs = otuIDs[ID];            
+      console.log(otuIDs)
+
+      var sampleValues = samples.map(row => row.sample_values);
+      var sampleValues = sampleValues[ID];
+      console.log(sampleValues)
+
+      var otuLabels = samples.map(row => row.otu_labels);
+      var otuLabels = otuLabels[ID];
+      console.log(otuLabels)
+
+      var trace = {
+          x: otuIDs,
+          y: sampleValues,
+          text: otuLabels,
+          mode: 'markers',
+          marker: {
+            size: sampleValues, 
+            }
+          };                       
+      
+      var data = [trace]
+          
+      var layout = {
+          xaxis: {title: 'OTU ID'},
+          yaxis: {title: 'Sample Values'},
+          showlegend: false,
+          height: 600,
+          width: 1200
+          };
+
+      // Display bubble chart             
+      Plotly.newPlot('bubble', data, layout);
+  })
+};
 
 // ------------------------------------------------------------------------------------
 // 4. Display the sample metadata, i.e., an individual's demographic information.
@@ -135,6 +186,7 @@ function fn_displayData(subjectID) {
 function optionChanged(newSelection) {
   fn_displayData(newSelection);
   fn_barChart(newSelection);
+  fn_bubbleChart(newSelection);
 };
 
 fn_initialize ();
