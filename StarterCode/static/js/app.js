@@ -90,7 +90,10 @@ function fn_initialize(){
 // ------------------------------------------------------------------------------------
 // 3. Create a bubble chart that displays each sample.   
 // ------------------------------------------------------------------------------------
+// function fn_bubbleChart(subjectID)
 //  <insert code here for bubble chart>
+
+
 
 // ------------------------------------------------------------------------------------
 // 4. Display the sample metadata, i.e., an individual's demographic information.
