@@ -60,14 +60,14 @@ function fn_initialize(){
 
           // Use sample_values as the values for the bar chart.
           var sampleValue = samples.map(row=>row.sample_values);
-          var sampleValueTopTen = sampleValue[ID].slice(0,10).reverse();
+          var sampleValueTopTen = sampleValue[ID];
           
           // Use otu_labels as the hovertext for the chart.
           var otuLabelTopTen = samples.map(row=>row.otu_labels).slice(0,10);
           
           var trace={
               x: sampleValueTopTen,
-              y: otuIDTopTen,
+              y: otuIDTopTen.map(otu =>`OTU ${otu}  `),
               text: otuLabelTopTen,
               type:'bar',
               orientation:'h'
@@ -78,7 +78,7 @@ function fn_initialize(){
           var layout = {
             title: "Top 10 OTUs",
             xaxis: { title: "Sample Values" },
-            yaxis: { title: "OTU IDs"},
+            // yaxis: { title: "OTU IDs"},
             margin: {t: 80, l: 175}
           };
 
