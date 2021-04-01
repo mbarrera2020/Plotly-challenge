@@ -54,7 +54,7 @@ function fn_initialize(){
 
           // Use otu_ids as the labels for the bar chart.
           var otuID = samples.map(row=>row.otu_ids);
-          var otuIDTopTen = otuID[ID].slice(0,10);
+          var otuIDTopTen = otuID[ID].slice(0,10).reverse();
 
           console.log(otuIDTopTen)
 
