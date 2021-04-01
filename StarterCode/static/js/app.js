@@ -25,7 +25,7 @@ function fn_initialize(){
           });
 
       // ---------------------------------------------------------------
-      // Initialize display with first record
+      // Initialize display with the first record
       // Display charts using first Test ID
       // ---------------------------------------------------------------
       var defaultID = testNames[0];
@@ -129,13 +129,14 @@ function fn_bubbleChart(subjectID){
           mode: 'markers',
           marker: {
             size: sampleValues, 
+            color: otuIDs
             }
           };                       
       
       var data = [trace]
           
       var layout = {
-          xaxis: {title: 'OTU ID'},
+          xaxis: {title: 'OTU IDs'},
           yaxis: {title: 'Sample Values'},
           showlegend: false,
           height: 600,
@@ -172,7 +173,8 @@ function fn_displayData(subjectID) {
     // Clear any existing metadata
     panelInfo.html("");
 
-    // Add key and value pair to the panel
+    // Add & display key and value pair to the Demographic panel
+    // ** use div tag to wrap the data
     Object.entries(result).forEach(([key, value]) => {
       panelInfo.append('div').text(`${key}: ${value}`);
     });
@@ -182,6 +184,7 @@ function fn_displayData(subjectID) {
 
 // ------------------------------------------------------------------------------------
 // 6.  Update all of the plots any time that a new sample is selected. 
+//     NOTE:  optionChanged ==> Reference line 25 in the index.html 
 // ------------------------------------------------------------------------------------
 function optionChanged(newSelection) {
   fn_displayData(newSelection);
