@@ -16,8 +16,7 @@ function fn_initialize(){
   d3.json('samples.json').then((data)=>{
   
       var testNames=data.names;
-      testNames.forEach((test) => {
-          dropdownMenu
+      testNames.forEach((test) => {dropdownMenu
             .append("option")
             .text(test)
             .property("value", test);
@@ -28,7 +27,7 @@ function fn_initialize(){
       // ---------------------------------------------------------------
       var defaultID = testNames[0];
 
-      console.log(testNames[0])
+      // Test / display data
       console.log(defaultID)
   
       fn_barChart(defaultID);
@@ -41,20 +40,33 @@ function fn_initialize(){
 // 2. Create a horizontal bar chart for selected Subject ID to display 
 //      the top 1O OTUs found in that individual.
 // ---------------------------------------------------------------------
-  function fn_barChart(subjectId){
+  function fn_barChart(subjectID){
       d3.json('samples.json').then((data)=>{
           var samples = data.samples;
-          var ID = samples.map(row=>row.id).indexOf(subjectId);
-          var otuValueTen = samples.map(row=>row.sample_values);
-          var otuValueTen = otuValueTen[ID].slice(0,10);
-          var otuIdTen = samples.map(row=>row.otu_ids);
-          var otuIdTen = otuIdTen[ID].slice(0,10);
-          var otuLabelTen = samples.map(row=>row.otu_labels).slice(0,10);
+          // Test / display data
+          console.log(samples)
+  
+          var ID = samples.map(row=>row.id).indexOf(subjectID);
+          // Test / display data
+          console.log(ID)
+
+          // Use otu_ids as the labels for the bar chart.
+          var otuID = samples.map(row=>row.otu_ids);
+          var otuIDTopTen = otuID[ID].slice(0,10);
+
+          console.log(otuIDTopTen)
+
+          // Use sample_values as the values for the bar chart.
+          var sampleValue = samples.map(row=>row.sample_values);
+          var sampleValueTopTen = sampleValue[ID].slice(0,10).reverse();
+          
+          // Use otu_labels as the hovertext for the chart.
+          var otuLabelTopTen = samples.map(row=>row.otu_labels).slice(0,10);
           
           var trace={
-              x: otuValueTen,
-              y: otuIdTen.map(r=>`OTU ${r}  `),
-              text: otuLabelTen,
+              x: sampleValueTopTen,
+              y: otuIDTopTen,
+              text: otuLabelTopTen,
               type:'bar',
               orientation:'h'
           }
@@ -89,22 +101,29 @@ function fn_displayData(subjectID) {
     var metadata = data.metadata;
 
     // Filter the data for the selected ID number 
-    var filteredData = metadata.filter(object => object.id === subjectID);
+    var filteredData = metadata.filter(object => object.id == subjectID);
     var result = filteredData[0];
     
     // Use d3 to select the panel with id of `#sample-metadata`
     var panelinfo = d3.select("#sample-metadata");
 
-    // Clear the display for the next metadata selection
-        panelinfo.html("");
+    // Use `.html("") to clear any existing metadata
+    panelinfo.html("");
 
     // Use `Object.entries` to add each key and value pair to the panel
-        Object.entries(result).forEach(([key, value]) => {
-        panelinfo.append("h6").text(`${key.toUpperCase()}: ${value}`);
-        
+    Object.entries(result).forEach(([key, value]) => {
+      panelinfo.append("h6").text(`${key.toUpperCase()}: ${value}`);
     });
 
   });
 } 
+
+// ------------------------------------------------------------------------------------
+// 6.  Update all of the plots any time that a new sample is selected. 
+// ------------------------------------------------------------------------------------
+function fn_optionChanged(newSelection) {
+  fn_displayData(newSelection);
+  fn_barChart(newSelection);
+};
 
 fn_initialize ();
