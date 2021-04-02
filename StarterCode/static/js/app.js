@@ -191,23 +191,63 @@ function fn_displayData(subjectID) {
 //    Modify the example gauge code to account for values ranging from 0 through 9.
 //    Update the chart whenever a new sample is selected.
 // ************************************************************************************
-// function fn_gaugeChart(){
+function fn_gaugeChart(subjectID) {
+  d3.json("samples.json").then((data) => {
+      var metadata = data.metadata;
 
-// var data = [
-// 	{
-// 		domain: { x: [0, 1], y: [0, 1] },
-// 		value: 270,
-// 		title: { text: "Speed" },
-// 		type: "indicator",
-// 		mode: "gauge+number"
-// 	}
-// ];
+      // Filter the data for the selected ID number 
 
-// var layout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
-// Plotly.newPlot('myDiv', data, layout);
+      var filteredData = metadata.filter(object => object.id == subjectID);
+      var result = filteredData[0];
+      console.log(result);
 
-// };
+      var wfreqValue = result.wfreq;
+      console.log(wfreqValue);
 
+      var data = [
+          {
+            domain: { x: [0, 1], y: [0, 1] },
+            type: "indicator",
+            mode: "gauge+number",
+            value: wfreqValue,
+            title: {text: "Belly Button Washing Frequency", font: { size: 16}},
+            // title: {text: "Scrubs per Week", font: { size: 12}},
+            gauge: {
+              axis: {range: [0, 9], tickwidth: 3, tickcolor: "green"}, 
+              bar: {color: "pink"},  
+              bgcolor: "white",
+              borderwidth: 0,
+              bordercolor: "black",
+              // color reference:  https://www.rapidtables.com/web/color/Yellow_Color.html
+              steps: [
+                {range: [0, 1], color: "#FFFFE0"},    //lightyellow
+                {range: [1, 2], color: "#FFFACD"},    //lemonchiffon
+                {range: [2, 3], color: "#FAFAD2"},    
+                {range: [3, 4], color: "#FFEFD5"},
+                {range: [5, 5], color: "#FFE4B5"},
+                {range: [5, 6], color: "#FFDAB9"},
+                {range: [6, 7], color: "#EEE8AA"},
+                {range: [7, 9], color: "#F0E68C"},
+                {range: [8, 9], color: "#BDB76B"}
+              ],  
+            }  
+          }  
+          
+        ];
+        
+        var layout = {
+          width: 600,
+          height: 400,
+          margin: { t: 25, r: 25, l: 25, b: 25 },
+          paper_bgcolor: "white",
+          font: { color: "rgb(51, 102, 255)", family: "Comic" }
+        };  
+
+      // Display gauge chart             
+      Plotly.newPlot("gauge", data, layout);
+  
+});
+}
 
 // ------------------------------------------------------------------------------------
 // 6.  Update all of the plots any time that a new sample is selected. 
