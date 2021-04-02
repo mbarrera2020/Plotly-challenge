@@ -209,14 +209,15 @@ function fn_gaugeChart(subjectID) {
             domain: { x: [0, 1], y: [0, 1] },
             type: "indicator",
             mode: "gauge+number",
+            number: {'suffix': " Scrubs per week", 'font': {'size': 18}},
             value: wfreqValue,
-            title: {text: "Belly Button Washing Frequency", font: { size: 16}},
+            title: {text: "Belly Button Washing Frequency", font: { size: 24}},
             // title: {text: "Scrubs per Week", font: { size: 12}},
             gauge: {
-              axis: {range: [0, 9], tickwidth: 3, tickcolor: "green"}, 
-              bar: {color: "pink"},  
+              axis: {range: [0, 9], tickwidth: 4, tickcolor: "black"}, 
+              bar: {color: "orange"},  
               bgcolor: "white",
-              borderwidth: 0,
+              borderwidth: 1,
               bordercolor: "black",
               // color reference:  https://www.rapidtables.com/web/color/Yellow_Color.html
               steps: [
@@ -224,10 +225,10 @@ function fn_gaugeChart(subjectID) {
                 {range: [1, 2], color: "#FFFACD"},    //lemonchiffon
                 {range: [2, 3], color: "#FAFAD2"},    
                 {range: [3, 4], color: "#FFEFD5"},
-                {range: [5, 5], color: "#FFE4B5"},
+                {range: [4, 5], color: "#FFE4B5"},
                 {range: [5, 6], color: "#FFDAB9"},
                 {range: [6, 7], color: "#EEE8AA"},
-                {range: [7, 9], color: "#F0E68C"},
+                {range: [7, 8], color: "#F0E68C"},
                 {range: [8, 9], color: "#BDB76B"}
               ],  
             }  
@@ -236,7 +237,7 @@ function fn_gaugeChart(subjectID) {
         ];
         
         var layout = {
-          width: 600,
+          width: 500,
           height: 400,
           margin: { t: 25, r: 25, l: 25, b: 25 },
           paper_bgcolor: "white",
