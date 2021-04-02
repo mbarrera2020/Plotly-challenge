@@ -36,6 +36,7 @@ function fn_initialize(){
       fn_displayData(defaultID);
       fn_barChart(defaultID);
       fn_bubbleChart(defaultID);
+      fn_gaugeChart(defaultID);
 
     });
    };
@@ -182,6 +183,32 @@ function fn_displayData(subjectID) {
   });
 } 
 
+// ************************************************************************************
+// ** Advanced Challenge -- Optional
+// ************************************************************************************
+//    Adapt the Gauge Chart from https://plot.ly/javascript/gauge-charts/ to plot 
+//      the weekly washing frequency of the individual.
+//    Modify the example gauge code to account for values ranging from 0 through 9.
+//    Update the chart whenever a new sample is selected.
+// ************************************************************************************
+// function fn_gaugeChart(){
+
+// var data = [
+// 	{
+// 		domain: { x: [0, 1], y: [0, 1] },
+// 		value: 270,
+// 		title: { text: "Speed" },
+// 		type: "indicator",
+// 		mode: "gauge+number"
+// 	}
+// ];
+
+// var layout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+// Plotly.newPlot('myDiv', data, layout);
+
+// };
+
+
 // ------------------------------------------------------------------------------------
 // 6.  Update all of the plots any time that a new sample is selected. 
 //     NOTE:  optionChanged ==> Reference line 25 in the index.html 
@@ -190,6 +217,7 @@ function optionChanged(newSelection) {
   fn_displayData(newSelection);
   fn_barChart(newSelection);
   fn_bubbleChart(newSelection);
+  fn_gaugeChart(newSelection);
 };
 
 fn_initialize ();
