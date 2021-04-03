@@ -209,7 +209,7 @@ function fn_gaugeChart(subjectID) {
             domain: { x: [0, 1], y: [0, 1] },
             type: "indicator",
             mode: "gauge+number",
-            number: {'suffix': " Scrubs per week", 'font': {'size': 16}},
+            number: {'suffix': "  (scrubs per week)", 'font': {'size': 16}},
             value: wfreqValue,
             text: ['0-1','1-2','2-3','3-4','4-5','5-6','6-7','7-8','8-9'],
             title: {text: "Belly Button Washing Frequency", color: "black", font: {size: 16}},
@@ -228,21 +228,21 @@ function fn_gaugeChart(subjectID) {
                 {range: [3, 4], color: "#FFEFD5"},
                 {range: [4, 5], color: "#FFE4B5"},
                 {range: [5, 6], color: "#FFDAB9"},
-                {range: [6, 7], color: "#EEE8AA"},
-                {range: [7, 8], color: "#F0E68C"},
-                {range: [8, 9], color: "#BDB76B"}
+                {range: [6, 7], color: "#F0E68C"},
+                {range: [7, 8], color: "#BDB76B"},
+                {range: [8, 9], color: "#808000"}
               ],  
             }  
           }  
         ];
         
         var layout = {
-          width: 500,
+          width: 400,
           height: 350,
           margin: {t: 20, r: 20, l: 20, b: 20},
           paper_bgcolor: "white",
           // paper_bgcolor: "lightgray",
-          font: {color: "black", family: "Arial"}
+          font: {color: "black", family: "Lato"}
         };  
 
       // Display gauge chart             
