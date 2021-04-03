@@ -216,6 +216,7 @@ function fn_gaugeChart(subjectID) {
             gauge: {
               axis: {range: [0, 9], tickwidth: 4, tickcolor: "black"}, 
               bar: {color: "orange"},  
+              text: ['0-1','1-2','2-3','3-4','4-5','5-6','6-7','7-8','8-9'],
               bgcolor: "white",
               borderwidth: 1,
               bordercolor: "black",
@@ -238,9 +239,10 @@ function fn_gaugeChart(subjectID) {
         
         var layout = {
           width: 500,
-          height: 400,
+          height: 350,
           margin: { t: 25, r: 25, l: 25, b: 25 },
-          paper_bgcolor: "white",
+          paper_bgcolor: "lightgray",
+          text: ['0-1','1-2','2-3','3-4','4-5','5-6','6-7','7-8','8-9'],
           font: { color: "rgb(51, 102, 255)", family: "Comic" }
         };  
 
