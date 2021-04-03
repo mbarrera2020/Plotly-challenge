@@ -236,16 +236,21 @@ function fn_gaugeChart(subjectID) {
                 // https://www.color-meanings.com/wp-content/uploads/color-chart.png
               steps: [
                 {range: [0, 1], color: "#B9D9EB"},    //light blue
-                {range: [1, 2], color: "#9BCBEB"},    
-                {range: [2, 3], color: "#69B3E7"},    
-                {range: [3, 4], color: "#8DC8E8"},
-                {range: [4, 5], color: "#6285E5"},
-                {range: [5, 6], color: "#00A3E0"},
-                {range: [6, 7], color: "#005EB8"},
-                {range: [7, 8], color: "#004B87"},
-                {range: [8, 9], color: "#003B5C"}
-
+                {range: [1, 2], color: "#99D6EA"},    
+                {range: [2, 3], color: "#9ADBE8"},    
+                {range: [3, 4], color: "#6AD1E3"},
+                {range: [4, 5], color: "#05C3DE"},
+                {range: [5, 6], color: "#00A9CE"},
+                {range: [6, 7], color: "#0092BC"},
+                {range: [7, 8], color: "#007FA3"},
+                {range: [8, 9], color: "#00677F"}
               ],  
+
+              threshold: {
+                line: {color: "green", width: 10},
+                thickness: 1.0,
+                value: 9}
+
             }  
           }  
         ];
