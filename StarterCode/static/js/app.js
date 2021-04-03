@@ -79,9 +79,9 @@ function fn_initialize(){
           // ------------------------------------------
           // Setup chart layout with title & margins
           // ------------------------------------------
-          var layout = {
+          var barLayout = {
             title: "Top 10 OTUs",
-            xaxis: { title: "Sample Values" },
+            xaxis: {title: "Sample Values"},
             // yaxis: { title: "OTU IDs"},
             margin: {t: 80, l: 175}
           };
@@ -89,7 +89,7 @@ function fn_initialize(){
           // ------------------------------------------
           // Display the bar chart            
           // ------------------------------------------
-          Plotly.newPlot('bar',[trace],layout);
+          Plotly.newPlot('bar', [trace], barLayout);
       })
   };
 
@@ -136,7 +136,7 @@ function fn_bubbleChart(subjectID){
       
       var data = [trace]
           
-      var layout = {
+      var bubbleLayout = {
           xaxis: {title: 'OTU IDs'},
           yaxis: {title: 'Sample Values'},
           showlegend: false,
@@ -145,7 +145,7 @@ function fn_bubbleChart(subjectID){
           };
 
       // Display bubble chart             
-      Plotly.newPlot('bubble', data, layout);
+      Plotly.newPlot('bubble', data, bubbleLayout);
   })
 };
 
@@ -236,7 +236,7 @@ function fn_gaugeChart(subjectID) {
           }  
         ];
         
-        var layout = {
+        var gaugeLayout = {
           width: 400,
           height: 350,
           margin: {t: 20, r: 20, l: 20, b: 20},
@@ -246,7 +246,7 @@ function fn_gaugeChart(subjectID) {
         };  
 
       // Display gauge chart             
-      Plotly.newPlot("gauge", data, layout);
+      Plotly.newPlot("gauge", data, gaugeLayout);
   
 });
 }
