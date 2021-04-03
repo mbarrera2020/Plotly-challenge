@@ -140,7 +140,7 @@ function fn_bubbleChart(subjectID){
           xaxis: {title: 'OTU IDs'},
           yaxis: {title: 'Sample Values'},
           showlegend: false,
-          height: 600,
+          height: 500,
           width: 1200
           };
 
