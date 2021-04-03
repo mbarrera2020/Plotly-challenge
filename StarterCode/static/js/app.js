@@ -209,14 +209,14 @@ function fn_gaugeChart(subjectID) {
             domain: { x: [0, 1], y: [0, 1] },
             type: "indicator",
             mode: "gauge+number",
-            number: {'suffix': " Scrubs per week", 'font': {'size': 18}},
+            number: {'suffix': " Scrubs per week", 'font': {'size': 16}},
             value: wfreqValue,
-            title: {text: "Belly Button Washing Frequency", font: { size: 24}},
+            text: ['0-1','1-2','2-3','3-4','4-5','5-6','6-7','7-8','8-9'],
+            title: {text: "Belly Button Washing Frequency", font: { size: 22}},
             // title: {text: "Scrubs per Week", font: { size: 12}},
             gauge: {
               axis: {range: [0, 9], tickwidth: 4, tickcolor: "black"}, 
               bar: {color: "orange"},  
-              text: ['0-1','1-2','2-3','3-4','4-5','5-6','6-7','7-8','8-9'],
               bgcolor: "white",
               borderwidth: 1,
               bordercolor: "black",
@@ -241,9 +241,9 @@ function fn_gaugeChart(subjectID) {
           width: 500,
           height: 350,
           margin: { t: 25, r: 25, l: 25, b: 25 },
-          paper_bgcolor: "lightgray",
-          text: ['0-1','1-2','2-3','3-4','4-5','5-6','6-7','7-8','8-9'],
-          font: { color: "rgb(51, 102, 255)", family: "Comic" }
+          paper_bgcolor: "white",
+          // paper_bgcolor: "lightgray",
+          font: { color: "#0000FF", family: "Arial" }
         };  
 
       // Display gauge chart             
