@@ -27,5 +27,12 @@ Use otu_labels for the text values.
 
 6) Update all of the plots any time that a new sample is selected.
 
+## Advanced Challenge
+Adapt the Gauge Chart from https://plot.ly/javascript/gauge-charts/ to plot the weekly washing frequency of the individual.
+
+Modify the example gauge code to account for values ranging from 0 through 9.
+
+Update the chart whenever a new sample is selected.
+
 ## Deployment
 Deploy app to a free static page hosting service, such as GitHub Pages.

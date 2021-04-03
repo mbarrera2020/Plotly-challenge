@@ -13,12 +13,12 @@
 // Note:  From index.html, select id="selDataset" 
 // ---------------------------------------------------------------
 function fn_initialize(){
-  var dropdownMenu = d3.selectAll('#selDataset');
+  var dropdownList = d3.selectAll('#selDataset');
 
   d3.json('samples.json').then((data)=>{
   
       var testNames=data.names;
-      testNames.forEach((test) => {dropdownMenu
+      testNames.forEach((test) => {dropdownList
             .append("option")
             .text(test)
             .property("value", test);
