@@ -216,21 +216,35 @@ function fn_gaugeChart(subjectID) {
             // title: {text: "Scrubs per Week", font: { size: 12}},
             gauge: {
               axis: {range: [0, 9], tickwidth: 1, tickcolor: "black"}, 
-              bar: {color: "orange"},  
+              bar: {color: "EDC8A3"},  
               bgcolor: "white",
               borderwidth: 1,
               bordercolor: "black",
               // color reference:  https://www.rapidtables.com/web/color/Yellow_Color.html
+              // steps: [
+              //   {range: [0, 1], color: "#FFFFE0"},    //lightyellow
+              //   {range: [1, 2], color: "#FFFACD"},    
+              //   {range: [2, 3], color: "#FAFAD2"},    
+              //   {range: [3, 4], color: "#FFEFD5"},
+              //   {range: [4, 5], color: "#FFE4B5"},
+              //   {range: [5, 6], color: "#FFDAB9"},
+              //   {range: [6, 7], color: "#F0E68C"},
+              //   {range: [7, 8], color: "#BDB76B"},
+              //   {range: [8, 9], color: "#808000"}
+
+                // color reference:  
+                // https://www.color-meanings.com/wp-content/uploads/color-chart.png
               steps: [
-                {range: [0, 1], color: "#FFFFE0"},    //lightyellow
-                {range: [1, 2], color: "#FFFACD"},    //lemonchiffon
-                {range: [2, 3], color: "#FAFAD2"},    
-                {range: [3, 4], color: "#FFEFD5"},
-                {range: [4, 5], color: "#FFE4B5"},
-                {range: [5, 6], color: "#FFDAB9"},
-                {range: [6, 7], color: "#F0E68C"},
-                {range: [7, 8], color: "#BDB76B"},
-                {range: [8, 9], color: "#808000"}
+                {range: [0, 1], color: "#B9D9EB"},    //light blue
+                {range: [1, 2], color: "#9BCBEB"},    
+                {range: [2, 3], color: "#69B3E7"},    
+                {range: [3, 4], color: "#8DC8E8"},
+                {range: [4, 5], color: "#6285E5"},
+                {range: [5, 6], color: "#00A3E0"},
+                {range: [6, 7], color: "#005EB8"},
+                {range: [7, 8], color: "#004B87"},
+                {range: [8, 9], color: "#003B5C"}
+
               ],  
             }  
           }  
@@ -242,7 +256,7 @@ function fn_gaugeChart(subjectID) {
           margin: {t: 20, r: 20, l: 20, b: 20},
           paper_bgcolor: "white",
           // paper_bgcolor: "lightgray",
-          font: {color: "black", family: "Lato"}
+          font: {color: "black", family: "Arial"}
         };  
 
       // Display gauge chart             
